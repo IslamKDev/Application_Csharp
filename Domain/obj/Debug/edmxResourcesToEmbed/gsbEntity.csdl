@@ -1,0 +1,894 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppGsbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="activite_compl">
+    <Key>
+      <PropertyRef Name="id_activite_compl" />
+    </Key>
+    <Property Name="id_activite_compl" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date_activite" Type="DateTime" />
+    <Property Name="lieu_activite" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="theme_activite" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="motif_activite" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="inviter" Relationship="Self.fk_inviter_activite_compl" FromRole="activite_compl" ToRole="inviter" />
+    <NavigationProperty Name="realiser" Relationship="Self.fk_realiser_activite_compl" FromRole="activite_compl" ToRole="realiser" />
+  </EntityType>
+  <EntityType Name="composant">
+    <Key>
+      <PropertyRef Name="id_composant" />
+    </Key>
+    <Property Name="id_composant" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lib_composant" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="constituer" Relationship="Self.fk_constituer_composant" FromRole="composant" ToRole="constituer" />
+  </EntityType>
+  <EntityType Name="constituer">
+    <Key>
+      <PropertyRef Name="id_composant" />
+      <PropertyRef Name="id_medicament" />
+    </Key>
+    <Property Name="id_composant" Type="Int32" Nullable="false" />
+    <Property Name="id_medicament" Type="Int32" Nullable="false" />
+    <Property Name="qte_composant" Type="Decimal" />
+    <NavigationProperty Name="composant" Relationship="Self.fk_constituer_composant" FromRole="constituer" ToRole="composant" />
+    <NavigationProperty Name="medicament" Relationship="Self.fk_constituer_medicament" FromRole="constituer" ToRole="medicament" />
+  </EntityType>
+  <EntityType Name="dosage">
+    <Key>
+      <PropertyRef Name="id_dosage" />
+    </Key>
+    <Property Name="id_dosage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="qte_dosage" Type="Int32" />
+    <Property Name="unite_dosage" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="prescrire" Relationship="Self.fk_prescrire_dosage" FromRole="dosage" ToRole="prescrire" />
+  </EntityType>
+  <EntityType Name="etat">
+    <Key>
+      <PropertyRef Name="id_etat" />
+    </Key>
+    <Property Name="id_etat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lib_etat" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="frais" Relationship="Self.fk_frais_etat" FromRole="etat" ToRole="frais" />
+  </EntityType>
+  <EntityType Name="famille">
+    <Key>
+      <PropertyRef Name="id_famille" />
+    </Key>
+    <Property Name="id_famille" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lib_famille" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="medicament" Relationship="Self.fk_medicament_famille" FromRole="famille" ToRole="medicament" />
+  </EntityType>
+  <EntityType Name="formuler">
+    <Key>
+      <PropertyRef Name="id_medicament" />
+      <PropertyRef Name="id_presentation" />
+    </Key>
+    <Property Name="id_medicament" Type="Int32" Nullable="false" />
+    <Property Name="id_presentation" Type="Int32" Nullable="false" />
+    <Property Name="qte_formuler" Type="Int32" />
+    <NavigationProperty Name="medicament" Relationship="Self.fk_formuler_medicament" FromRole="formuler" ToRole="medicament" />
+    <NavigationProperty Name="presentation" Relationship="Self.fk_formuler_presentation" FromRole="formuler" ToRole="presentation" />
+  </EntityType>
+  <EntityType Name="frais">
+    <Key>
+      <PropertyRef Name="id_frais" />
+    </Key>
+    <Property Name="id_frais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_etat" Type="Int32" Nullable="false" />
+    <Property Name="anneemois" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_visiteur" Type="Int32" Nullable="false" />
+    <Property Name="nbjustificatifs" Type="Int32" />
+    <Property Name="datemodification" Type="DateTime" />
+    <Property Name="montantvalide" Type="Decimal" />
+    <NavigationProperty Name="etat" Relationship="Self.fk_frais_etat" FromRole="frais" ToRole="etat" />
+    <NavigationProperty Name="visiteur" Relationship="Self.fk_frais_visiteur" FromRole="frais" ToRole="visiteur" />
+    <NavigationProperty Name="fraishorsforfait" Relationship="Self.fk_fraishorsforfait_frais" FromRole="frais" ToRole="fraishorsforfait" />
+    <NavigationProperty Name="ligne_fraisforfait" Relationship="Self.fk_ligne_frais" FromRole="frais" ToRole="ligne_fraisforfait" />
+  </EntityType>
+  <EntityType Name="fraisforfait">
+    <Key>
+      <PropertyRef Name="id_fraisforfait" />
+    </Key>
+    <Property Name="id_fraisforfait" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lib_fraisforfait" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="montant_frais_forfait" Type="Decimal" />
+    <NavigationProperty Name="ligne_fraisforfait" Relationship="Self.fk_ligne_fraisforfait" FromRole="fraisforfait" ToRole="ligne_fraisforfait" />
+  </EntityType>
+  <EntityType Name="fraishorsforfait">
+    <Key>
+      <PropertyRef Name="id_fraishorsforfait" />
+    </Key>
+    <Property Name="id_fraishorsforfait" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_frais" Type="Int32" Nullable="false" />
+    <Property Name="date_fraishorsforfait" Type="DateTime" />
+    <Property Name="montant_fraishorsforfait" Type="Decimal" />
+    <Property Name="lib_fraishorsforfait" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="frais" Relationship="Self.fk_fraishorsforfait_frais" FromRole="fraishorsforfait" ToRole="frais" />
+  </EntityType>
+  <EntityType Name="inviter">
+    <Key>
+      <PropertyRef Name="id_activite_compl" />
+      <PropertyRef Name="id_praticien" />
+    </Key>
+    <Property Name="id_activite_compl" Type="Int32" Nullable="false" />
+    <Property Name="id_praticien" Type="Int32" Nullable="false" />
+    <Property Name="specialiste" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="activite_compl" Relationship="Self.fk_inviter_activite_compl" FromRole="inviter" ToRole="activite_compl" />
+    <NavigationProperty Name="praticien" Relationship="Self.fk_inviter_praticien" FromRole="inviter" ToRole="praticien" />
+  </EntityType>
+  <EntityType Name="laboratoire">
+    <Key>
+      <PropertyRef Name="id_laboratoire" />
+    </Key>
+    <Property Name="id_laboratoire" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_laboratoire" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="chef_vente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="visiteur" Relationship="Self.fk_visiteur_laboratoire" FromRole="laboratoire" ToRole="visiteur" />
+  </EntityType>
+  <EntityType Name="ligne_fraisforfait">
+    <Key>
+      <PropertyRef Name="id_frais" />
+      <PropertyRef Name="id_fraisforfait" />
+    </Key>
+    <Property Name="id_frais" Type="Int32" Nullable="false" />
+    <Property Name="id_fraisforfait" Type="Int32" Nullable="false" />
+    <Property Name="quantite_ligne" Type="Int32" />
+    <NavigationProperty Name="frais" Relationship="Self.fk_ligne_frais" FromRole="ligne_fraisforfait" ToRole="frais" />
+    <NavigationProperty Name="fraisforfait" Relationship="Self.fk_ligne_fraisforfait" FromRole="ligne_fraisforfait" ToRole="fraisforfait" />
+  </EntityType>
+  <EntityType Name="medicament">
+    <Key>
+      <PropertyRef Name="id_medicament" />
+    </Key>
+    <Property Name="id_medicament" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_famille" Type="Int32" />
+    <Property Name="depot_legal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="nom_commercial" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="effets" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="contre_indication" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="prix_echantillon" Type="Decimal" />
+    <NavigationProperty Name="constituer" Relationship="Self.fk_constituer_medicament" FromRole="medicament" ToRole="constituer" />
+    <NavigationProperty Name="famille" Relationship="Self.fk_medicament_famille" FromRole="medicament" ToRole="famille" />
+    <NavigationProperty Name="formuler" Relationship="Self.fk_formuler_medicament" FromRole="medicament" ToRole="formuler" />
+    <NavigationProperty Name="offrir" Relationship="Self.fk_offrir_medicament" FromRole="medicament" ToRole="offrir" />
+    <NavigationProperty Name="prescrire" Relationship="Self.fk_prescrire_medicament" FromRole="medicament" ToRole="prescrire" />
+    <NavigationProperty Name="stats_prescriptions" Relationship="Self.fk_stats_prescriptions_medicament" FromRole="medicament" ToRole="stats_prescriptions" />
+    <NavigationProperty Name="medicament1" Relationship="Self.interagir" FromRole="medicament" ToRole="medicament1" />
+    <NavigationProperty Name="medicament2" Relationship="Self.interagir" FromRole="medicament1" ToRole="medicament" />
+  </EntityType>
+  <EntityType Name="offrir">
+    <Key>
+      <PropertyRef Name="id_medicament" />
+      <PropertyRef Name="id_rapport" />
+      <PropertyRef Name="id_visiteur" />
+    </Key>
+    <Property Name="id_medicament" Type="Int32" Nullable="false" />
+    <Property Name="id_rapport" Type="Int32" Nullable="false" />
+    <Property Name="id_visiteur" Type="Int32" Nullable="false" />
+    <Property Name="qte_offerte" Type="Int32" />
+    <NavigationProperty Name="medicament" Relationship="Self.fk_offrir_medicament" FromRole="offrir" ToRole="medicament" />
+    <NavigationProperty Name="rapport_visite" Relationship="Self.fk_offrir_rapport_visite" FromRole="offrir" ToRole="rapport_visite" />
+    <NavigationProperty Name="visiteur" Relationship="Self.fk_offrir_visiteur" FromRole="offrir" ToRole="visiteur" />
+  </EntityType>
+  <EntityType Name="posseder">
+    <Key>
+      <PropertyRef Name="id_praticien" />
+      <PropertyRef Name="id_specialite" />
+    </Key>
+    <Property Name="id_praticien" Type="Int32" Nullable="false" />
+    <Property Name="id_specialite" Type="Int32" Nullable="false" />
+    <Property Name="diplome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="coef_prescription" Type="Decimal" />
+    <NavigationProperty Name="praticien" Relationship="Self.fk_posseder_praticien" FromRole="posseder" ToRole="praticien" />
+    <NavigationProperty Name="specialite" Relationship="Self.fk_posseder_specialite" FromRole="posseder" ToRole="specialite" />
+  </EntityType>
+  <EntityType Name="praticien">
+    <Key>
+      <PropertyRef Name="id_praticien" />
+    </Key>
+    <Property Name="id_praticien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_type_praticien" Type="Int32" />
+    <Property Name="nom_praticien" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="prenom_praticien" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="adresse_praticien" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="cp_praticien" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ville_praticien" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="coef_notoriete" Type="Decimal" />
+    <NavigationProperty Name="inviter" Relationship="Self.fk_inviter_praticien" FromRole="praticien" ToRole="inviter" />
+    <NavigationProperty Name="posseder" Relationship="Self.fk_posseder_praticien" FromRole="praticien" ToRole="posseder" />
+    <NavigationProperty Name="type_praticien" Relationship="Self.fk_praticien_type_praticien" FromRole="praticien" ToRole="type_praticien" />
+    <NavigationProperty Name="rapport_visite" Relationship="Self.fk_rapport_visite_praticien" FromRole="praticien" ToRole="rapport_visite" />
+    <NavigationProperty Name="stats_prescriptions" Relationship="Self.fk_stats_prescriptions_praticien" FromRole="praticien" ToRole="stats_prescriptions" />
+  </EntityType>
+  <EntityType Name="prescrire">
+    <Key>
+      <PropertyRef Name="id_dosage" />
+      <PropertyRef Name="id_medicament" />
+      <PropertyRef Name="id_type_individu" />
+    </Key>
+    <Property Name="id_dosage" Type="Int32" Nullable="false" />
+    <Property Name="id_medicament" Type="Int32" Nullable="false" />
+    <Property Name="id_type_individu" Type="Int32" Nullable="false" />
+    <Property Name="posologie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="dosage" Relationship="Self.fk_prescrire_dosage" FromRole="prescrire" ToRole="dosage" />
+    <NavigationProperty Name="medicament" Relationship="Self.fk_prescrire_medicament" FromRole="prescrire" ToRole="medicament" />
+    <NavigationProperty Name="type_individu" Relationship="Self.fk_prescrire_type_individu" FromRole="prescrire" ToRole="type_individu" />
+  </EntityType>
+  <EntityType Name="presentation">
+    <Key>
+      <PropertyRef Name="id_presentation" />
+    </Key>
+    <Property Name="id_presentation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lib_presentation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="formuler" Relationship="Self.fk_formuler_presentation" FromRole="presentation" ToRole="formuler" />
+  </EntityType>
+  <EntityType Name="rapport_visite">
+    <Key>
+      <PropertyRef Name="id_rapport" />
+    </Key>
+    <Property Name="id_rapport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_praticien" Type="Int32" />
+    <Property Name="id_visiteur" Type="Int32" Nullable="false" />
+    <Property Name="date_rapport" Type="DateTime" />
+    <Property Name="bilan" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="motif" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="offrir" Relationship="Self.fk_offrir_rapport_visite" FromRole="rapport_visite" ToRole="offrir" />
+    <NavigationProperty Name="praticien" Relationship="Self.fk_rapport_visite_praticien" FromRole="rapport_visite" ToRole="praticien" />
+    <NavigationProperty Name="visiteur" Relationship="Self.fk_rapport_visite_visiteur" FromRole="rapport_visite" ToRole="visiteur" />
+  </EntityType>
+  <EntityType Name="realiser">
+    <Key>
+      <PropertyRef Name="id_activite_compl" />
+      <PropertyRef Name="id_visiteur" />
+    </Key>
+    <Property Name="id_activite_compl" Type="Int32" Nullable="false" />
+    <Property Name="id_visiteur" Type="Int32" Nullable="false" />
+    <Property Name="montant_ac" Type="Decimal" />
+    <NavigationProperty Name="activite_compl" Relationship="Self.fk_realiser_activite_compl" FromRole="realiser" ToRole="activite_compl" />
+    <NavigationProperty Name="visiteur" Relationship="Self.fk_realiser_visiteur" FromRole="realiser" ToRole="visiteur" />
+  </EntityType>
+  <EntityType Name="region">
+    <Key>
+      <PropertyRef Name="id_region" />
+    </Key>
+    <Property Name="id_region" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_secteur" Type="Int32" />
+    <Property Name="nom_region" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="secteur" Relationship="Self.fk_region_secteur" FromRole="region" ToRole="secteur" />
+    <NavigationProperty Name="travailler" Relationship="Self.fk_travailler_region" FromRole="region" ToRole="travailler" />
+  </EntityType>
+  <EntityType Name="secteur">
+    <Key>
+      <PropertyRef Name="id_secteur" />
+    </Key>
+    <Property Name="id_secteur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lib_secteur" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="region" Relationship="Self.fk_region_secteur" FromRole="secteur" ToRole="region" />
+    <NavigationProperty Name="visiteur" Relationship="Self.fk_visiteur_secteur" FromRole="secteur" ToRole="visiteur" />
+  </EntityType>
+  <EntityType Name="specialite">
+    <Key>
+      <PropertyRef Name="id_specialite" />
+    </Key>
+    <Property Name="id_specialite" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lib_specialite" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="posseder" Relationship="Self.fk_posseder_specialite" FromRole="specialite" ToRole="posseder" />
+  </EntityType>
+  <EntityType Name="stats_prescriptions">
+    <Key>
+      <PropertyRef Name="id_praticien" />
+      <PropertyRef Name="id_medicament" />
+      <PropertyRef Name="annee_mois" />
+    </Key>
+    <Property Name="id_praticien" Type="Int32" Nullable="false" />
+    <Property Name="id_medicament" Type="Int32" Nullable="false" />
+    <Property Name="annee_mois" Type="Int32" Nullable="false" />
+    <Property Name="quantite" Type="Int32" />
+    <NavigationProperty Name="medicament" Relationship="Self.fk_stats_prescriptions_medicament" FromRole="stats_prescriptions" ToRole="medicament" />
+    <NavigationProperty Name="praticien" Relationship="Self.fk_stats_prescriptions_praticien" FromRole="stats_prescriptions" ToRole="praticien" />
+  </EntityType>
+  <EntityType Name="travailler">
+    <Key>
+      <PropertyRef Name="id_visiteur" />
+      <PropertyRef Name="jjmmaa" />
+      <PropertyRef Name="id_region" />
+    </Key>
+    <Property Name="id_visiteur" Type="Int32" Nullable="false" />
+    <Property Name="jjmmaa" Type="DateTime" Nullable="false" />
+    <Property Name="id_region" Type="Int32" Nullable="false" />
+    <Property Name="role_visiteur" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="region" Relationship="Self.fk_travailler_region" FromRole="travailler" ToRole="region" />
+    <NavigationProperty Name="visiteur" Relationship="Self.fk_travailler_visiteur" FromRole="travailler" ToRole="visiteur" />
+  </EntityType>
+  <EntityType Name="type_individu">
+    <Key>
+      <PropertyRef Name="id_type_individu" />
+    </Key>
+    <Property Name="id_type_individu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lib_type_individu" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="prescrire" Relationship="Self.fk_prescrire_type_individu" FromRole="type_individu" ToRole="prescrire" />
+  </EntityType>
+  <EntityType Name="type_praticien">
+    <Key>
+      <PropertyRef Name="id_type_praticien" />
+    </Key>
+    <Property Name="id_type_praticien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lib_type_praticien" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="lieu_type_praticien" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="praticien" Relationship="Self.fk_praticien_type_praticien" FromRole="type_praticien" ToRole="praticien" />
+  </EntityType>
+  <EntityType Name="visiteur">
+    <Key>
+      <PropertyRef Name="id_visiteur" />
+    </Key>
+    <Property Name="id_visiteur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_laboratoire" Type="Int32" />
+    <Property Name="id_secteur" Type="Int32" />
+    <Property Name="nom_visiteur" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="prenom_visiteur" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="adresse_visiteur" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="cp_visiteur" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ville_visiteur" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="date_embauche" Type="DateTime" />
+    <Property Name="login_visiteur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pwd_visiteur" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="type_visiteur" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="sel_visiteur" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="frais" Relationship="Self.fk_frais_visiteur" FromRole="visiteur" ToRole="frais" />
+    <NavigationProperty Name="laboratoire" Relationship="Self.fk_visiteur_laboratoire" FromRole="visiteur" ToRole="laboratoire" />
+    <NavigationProperty Name="offrir" Relationship="Self.fk_offrir_visiteur" FromRole="visiteur" ToRole="offrir" />
+    <NavigationProperty Name="rapport_visite" Relationship="Self.fk_rapport_visite_visiteur" FromRole="visiteur" ToRole="rapport_visite" />
+    <NavigationProperty Name="realiser" Relationship="Self.fk_realiser_visiteur" FromRole="visiteur" ToRole="realiser" />
+    <NavigationProperty Name="secteur" Relationship="Self.fk_visiteur_secteur" FromRole="visiteur" ToRole="secteur" />
+    <NavigationProperty Name="travailler" Relationship="Self.fk_travailler_visiteur" FromRole="visiteur" ToRole="travailler" />
+  </EntityType>
+  <Association Name="fk_inviter_activite_compl">
+    <End Role="activite_compl" Type="Self.activite_compl" Multiplicity="1" />
+    <End Role="inviter" Type="Self.inviter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="activite_compl">
+        <PropertyRef Name="id_activite_compl" />
+      </Principal>
+      <Dependent Role="inviter">
+        <PropertyRef Name="id_activite_compl" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_realiser_activite_compl">
+    <End Role="activite_compl" Type="Self.activite_compl" Multiplicity="1" />
+    <End Role="realiser" Type="Self.realiser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="activite_compl">
+        <PropertyRef Name="id_activite_compl" />
+      </Principal>
+      <Dependent Role="realiser">
+        <PropertyRef Name="id_activite_compl" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_constituer_composant">
+    <End Role="composant" Type="Self.composant" Multiplicity="1" />
+    <End Role="constituer" Type="Self.constituer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="composant">
+        <PropertyRef Name="id_composant" />
+      </Principal>
+      <Dependent Role="constituer">
+        <PropertyRef Name="id_composant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_constituer_medicament">
+    <End Role="medicament" Type="Self.medicament" Multiplicity="1" />
+    <End Role="constituer" Type="Self.constituer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medicament">
+        <PropertyRef Name="id_medicament" />
+      </Principal>
+      <Dependent Role="constituer">
+        <PropertyRef Name="id_medicament" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_prescrire_dosage">
+    <End Role="dosage" Type="Self.dosage" Multiplicity="1" />
+    <End Role="prescrire" Type="Self.prescrire" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dosage">
+        <PropertyRef Name="id_dosage" />
+      </Principal>
+      <Dependent Role="prescrire">
+        <PropertyRef Name="id_dosage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_frais_etat">
+    <End Role="etat" Type="Self.etat" Multiplicity="1" />
+    <End Role="frais" Type="Self.frais" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="etat">
+        <PropertyRef Name="id_etat" />
+      </Principal>
+      <Dependent Role="frais">
+        <PropertyRef Name="id_etat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_medicament_famille">
+    <End Role="famille" Type="Self.famille" Multiplicity="0..1" />
+    <End Role="medicament" Type="Self.medicament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="famille">
+        <PropertyRef Name="id_famille" />
+      </Principal>
+      <Dependent Role="medicament">
+        <PropertyRef Name="id_famille" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_formuler_medicament">
+    <End Role="medicament" Type="Self.medicament" Multiplicity="1" />
+    <End Role="formuler" Type="Self.formuler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medicament">
+        <PropertyRef Name="id_medicament" />
+      </Principal>
+      <Dependent Role="formuler">
+        <PropertyRef Name="id_medicament" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_formuler_presentation">
+    <End Role="presentation" Type="Self.presentation" Multiplicity="1" />
+    <End Role="formuler" Type="Self.formuler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="presentation">
+        <PropertyRef Name="id_presentation" />
+      </Principal>
+      <Dependent Role="formuler">
+        <PropertyRef Name="id_presentation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_frais_visiteur">
+    <End Role="visiteur" Type="Self.visiteur" Multiplicity="1" />
+    <End Role="frais" Type="Self.frais" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="visiteur">
+        <PropertyRef Name="id_visiteur" />
+      </Principal>
+      <Dependent Role="frais">
+        <PropertyRef Name="id_visiteur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_fraishorsforfait_frais">
+    <End Role="frais" Type="Self.frais" Multiplicity="1" />
+    <End Role="fraishorsforfait" Type="Self.fraishorsforfait" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="frais">
+        <PropertyRef Name="id_frais" />
+      </Principal>
+      <Dependent Role="fraishorsforfait">
+        <PropertyRef Name="id_frais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ligne_frais">
+    <End Role="frais" Type="Self.frais" Multiplicity="1" />
+    <End Role="ligne_fraisforfait" Type="Self.ligne_fraisforfait" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="frais">
+        <PropertyRef Name="id_frais" />
+      </Principal>
+      <Dependent Role="ligne_fraisforfait">
+        <PropertyRef Name="id_frais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ligne_fraisforfait">
+    <End Role="fraisforfait" Type="Self.fraisforfait" Multiplicity="1" />
+    <End Role="ligne_fraisforfait" Type="Self.ligne_fraisforfait" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fraisforfait">
+        <PropertyRef Name="id_fraisforfait" />
+      </Principal>
+      <Dependent Role="ligne_fraisforfait">
+        <PropertyRef Name="id_fraisforfait" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_inviter_praticien">
+    <End Role="praticien" Type="Self.praticien" Multiplicity="1" />
+    <End Role="inviter" Type="Self.inviter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="praticien">
+        <PropertyRef Name="id_praticien" />
+      </Principal>
+      <Dependent Role="inviter">
+        <PropertyRef Name="id_praticien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_visiteur_laboratoire">
+    <End Role="laboratoire" Type="Self.laboratoire" Multiplicity="0..1" />
+    <End Role="visiteur" Type="Self.visiteur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="laboratoire">
+        <PropertyRef Name="id_laboratoire" />
+      </Principal>
+      <Dependent Role="visiteur">
+        <PropertyRef Name="id_laboratoire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_offrir_medicament">
+    <End Role="medicament" Type="Self.medicament" Multiplicity="1" />
+    <End Role="offrir" Type="Self.offrir" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medicament">
+        <PropertyRef Name="id_medicament" />
+      </Principal>
+      <Dependent Role="offrir">
+        <PropertyRef Name="id_medicament" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_prescrire_medicament">
+    <End Role="medicament" Type="Self.medicament" Multiplicity="1" />
+    <End Role="prescrire" Type="Self.prescrire" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medicament">
+        <PropertyRef Name="id_medicament" />
+      </Principal>
+      <Dependent Role="prescrire">
+        <PropertyRef Name="id_medicament" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_stats_prescriptions_medicament">
+    <End Role="medicament" Type="Self.medicament" Multiplicity="1" />
+    <End Role="stats_prescriptions" Type="Self.stats_prescriptions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medicament">
+        <PropertyRef Name="id_medicament" />
+      </Principal>
+      <Dependent Role="stats_prescriptions">
+        <PropertyRef Name="id_medicament" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_offrir_rapport_visite">
+    <End Role="rapport_visite" Type="Self.rapport_visite" Multiplicity="1" />
+    <End Role="offrir" Type="Self.offrir" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rapport_visite">
+        <PropertyRef Name="id_rapport" />
+      </Principal>
+      <Dependent Role="offrir">
+        <PropertyRef Name="id_rapport" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_offrir_visiteur">
+    <End Role="visiteur" Type="Self.visiteur" Multiplicity="1" />
+    <End Role="offrir" Type="Self.offrir" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="visiteur">
+        <PropertyRef Name="id_visiteur" />
+      </Principal>
+      <Dependent Role="offrir">
+        <PropertyRef Name="id_visiteur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_posseder_praticien">
+    <End Role="praticien" Type="Self.praticien" Multiplicity="1" />
+    <End Role="posseder" Type="Self.posseder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="praticien">
+        <PropertyRef Name="id_praticien" />
+      </Principal>
+      <Dependent Role="posseder">
+        <PropertyRef Name="id_praticien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_posseder_specialite">
+    <End Role="specialite" Type="Self.specialite" Multiplicity="1" />
+    <End Role="posseder" Type="Self.posseder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="specialite">
+        <PropertyRef Name="id_specialite" />
+      </Principal>
+      <Dependent Role="posseder">
+        <PropertyRef Name="id_specialite" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_praticien_type_praticien">
+    <End Role="type_praticien" Type="Self.type_praticien" Multiplicity="0..1" />
+    <End Role="praticien" Type="Self.praticien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type_praticien">
+        <PropertyRef Name="id_type_praticien" />
+      </Principal>
+      <Dependent Role="praticien">
+        <PropertyRef Name="id_type_praticien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_rapport_visite_praticien">
+    <End Role="praticien" Type="Self.praticien" Multiplicity="0..1" />
+    <End Role="rapport_visite" Type="Self.rapport_visite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="praticien">
+        <PropertyRef Name="id_praticien" />
+      </Principal>
+      <Dependent Role="rapport_visite">
+        <PropertyRef Name="id_praticien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_stats_prescriptions_praticien">
+    <End Role="praticien" Type="Self.praticien" Multiplicity="1" />
+    <End Role="stats_prescriptions" Type="Self.stats_prescriptions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="praticien">
+        <PropertyRef Name="id_praticien" />
+      </Principal>
+      <Dependent Role="stats_prescriptions">
+        <PropertyRef Name="id_praticien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_prescrire_type_individu">
+    <End Role="type_individu" Type="Self.type_individu" Multiplicity="1" />
+    <End Role="prescrire" Type="Self.prescrire" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type_individu">
+        <PropertyRef Name="id_type_individu" />
+      </Principal>
+      <Dependent Role="prescrire">
+        <PropertyRef Name="id_type_individu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_rapport_visite_visiteur">
+    <End Role="visiteur" Type="Self.visiteur" Multiplicity="1" />
+    <End Role="rapport_visite" Type="Self.rapport_visite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="visiteur">
+        <PropertyRef Name="id_visiteur" />
+      </Principal>
+      <Dependent Role="rapport_visite">
+        <PropertyRef Name="id_visiteur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_realiser_visiteur">
+    <End Role="visiteur" Type="Self.visiteur" Multiplicity="1" />
+    <End Role="realiser" Type="Self.realiser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="visiteur">
+        <PropertyRef Name="id_visiteur" />
+      </Principal>
+      <Dependent Role="realiser">
+        <PropertyRef Name="id_visiteur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_region_secteur">
+    <End Role="secteur" Type="Self.secteur" Multiplicity="0..1" />
+    <End Role="region" Type="Self.region" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="secteur">
+        <PropertyRef Name="id_secteur" />
+      </Principal>
+      <Dependent Role="region">
+        <PropertyRef Name="id_secteur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_travailler_region">
+    <End Role="region" Type="Self.region" Multiplicity="1" />
+    <End Role="travailler" Type="Self.travailler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="region">
+        <PropertyRef Name="id_region" />
+      </Principal>
+      <Dependent Role="travailler">
+        <PropertyRef Name="id_region" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_visiteur_secteur">
+    <End Role="secteur" Type="Self.secteur" Multiplicity="0..1" />
+    <End Role="visiteur" Type="Self.visiteur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="secteur">
+        <PropertyRef Name="id_secteur" />
+      </Principal>
+      <Dependent Role="visiteur">
+        <PropertyRef Name="id_secteur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_travailler_visiteur">
+    <End Role="visiteur" Type="Self.visiteur" Multiplicity="1" />
+    <End Role="travailler" Type="Self.travailler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="visiteur">
+        <PropertyRef Name="id_visiteur" />
+      </Principal>
+      <Dependent Role="travailler">
+        <PropertyRef Name="id_visiteur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="interagir">
+    <End Role="medicament" Type="Self.medicament" Multiplicity="*" />
+    <End Role="medicament1" Type="Self.medicament" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="AppGsbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="activite_compl" EntityType="Self.activite_compl" />
+    <EntitySet Name="composant" EntityType="Self.composant" />
+    <EntitySet Name="constituer" EntityType="Self.constituer" />
+    <EntitySet Name="dosage" EntityType="Self.dosage" />
+    <EntitySet Name="etat" EntityType="Self.etat" />
+    <EntitySet Name="famille" EntityType="Self.famille" />
+    <EntitySet Name="formuler" EntityType="Self.formuler" />
+    <EntitySet Name="frais" EntityType="Self.frais" />
+    <EntitySet Name="fraisforfait" EntityType="Self.fraisforfait" />
+    <EntitySet Name="fraishorsforfait" EntityType="Self.fraishorsforfait" />
+    <EntitySet Name="inviter" EntityType="Self.inviter" />
+    <EntitySet Name="laboratoire" EntityType="Self.laboratoire" />
+    <EntitySet Name="ligne_fraisforfait" EntityType="Self.ligne_fraisforfait" />
+    <EntitySet Name="medicament" EntityType="Self.medicament" />
+    <EntitySet Name="offrir" EntityType="Self.offrir" />
+    <EntitySet Name="posseder" EntityType="Self.posseder" />
+    <EntitySet Name="praticien" EntityType="Self.praticien" />
+    <EntitySet Name="prescrire" EntityType="Self.prescrire" />
+    <EntitySet Name="presentation" EntityType="Self.presentation" />
+    <EntitySet Name="rapport_visite" EntityType="Self.rapport_visite" />
+    <EntitySet Name="realiser" EntityType="Self.realiser" />
+    <EntitySet Name="region" EntityType="Self.region" />
+    <EntitySet Name="secteur" EntityType="Self.secteur" />
+    <EntitySet Name="specialite" EntityType="Self.specialite" />
+    <EntitySet Name="stats_prescriptions" EntityType="Self.stats_prescriptions" />
+    <EntitySet Name="travailler" EntityType="Self.travailler" />
+    <EntitySet Name="type_individu" EntityType="Self.type_individu" />
+    <EntitySet Name="type_praticien" EntityType="Self.type_praticien" />
+    <EntitySet Name="visiteur" EntityType="Self.visiteur" />
+    <AssociationSet Name="fk_inviter_activite_compl" Association="Self.fk_inviter_activite_compl">
+      <End Role="activite_compl" EntitySet="activite_compl" />
+      <End Role="inviter" EntitySet="inviter" />
+    </AssociationSet>
+    <AssociationSet Name="fk_realiser_activite_compl" Association="Self.fk_realiser_activite_compl">
+      <End Role="activite_compl" EntitySet="activite_compl" />
+      <End Role="realiser" EntitySet="realiser" />
+    </AssociationSet>
+    <AssociationSet Name="fk_constituer_composant" Association="Self.fk_constituer_composant">
+      <End Role="composant" EntitySet="composant" />
+      <End Role="constituer" EntitySet="constituer" />
+    </AssociationSet>
+    <AssociationSet Name="fk_constituer_medicament" Association="Self.fk_constituer_medicament">
+      <End Role="medicament" EntitySet="medicament" />
+      <End Role="constituer" EntitySet="constituer" />
+    </AssociationSet>
+    <AssociationSet Name="fk_prescrire_dosage" Association="Self.fk_prescrire_dosage">
+      <End Role="dosage" EntitySet="dosage" />
+      <End Role="prescrire" EntitySet="prescrire" />
+    </AssociationSet>
+    <AssociationSet Name="fk_frais_etat" Association="Self.fk_frais_etat">
+      <End Role="etat" EntitySet="etat" />
+      <End Role="frais" EntitySet="frais" />
+    </AssociationSet>
+    <AssociationSet Name="fk_medicament_famille" Association="Self.fk_medicament_famille">
+      <End Role="famille" EntitySet="famille" />
+      <End Role="medicament" EntitySet="medicament" />
+    </AssociationSet>
+    <AssociationSet Name="fk_formuler_medicament" Association="Self.fk_formuler_medicament">
+      <End Role="medicament" EntitySet="medicament" />
+      <End Role="formuler" EntitySet="formuler" />
+    </AssociationSet>
+    <AssociationSet Name="fk_formuler_presentation" Association="Self.fk_formuler_presentation">
+      <End Role="presentation" EntitySet="presentation" />
+      <End Role="formuler" EntitySet="formuler" />
+    </AssociationSet>
+    <AssociationSet Name="fk_frais_visiteur" Association="Self.fk_frais_visiteur">
+      <End Role="visiteur" EntitySet="visiteur" />
+      <End Role="frais" EntitySet="frais" />
+    </AssociationSet>
+    <AssociationSet Name="fk_fraishorsforfait_frais" Association="Self.fk_fraishorsforfait_frais">
+      <End Role="frais" EntitySet="frais" />
+      <End Role="fraishorsforfait" EntitySet="fraishorsforfait" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ligne_frais" Association="Self.fk_ligne_frais">
+      <End Role="frais" EntitySet="frais" />
+      <End Role="ligne_fraisforfait" EntitySet="ligne_fraisforfait" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ligne_fraisforfait" Association="Self.fk_ligne_fraisforfait">
+      <End Role="fraisforfait" EntitySet="fraisforfait" />
+      <End Role="ligne_fraisforfait" EntitySet="ligne_fraisforfait" />
+    </AssociationSet>
+    <AssociationSet Name="fk_inviter_praticien" Association="Self.fk_inviter_praticien">
+      <End Role="praticien" EntitySet="praticien" />
+      <End Role="inviter" EntitySet="inviter" />
+    </AssociationSet>
+    <AssociationSet Name="fk_visiteur_laboratoire" Association="Self.fk_visiteur_laboratoire">
+      <End Role="laboratoire" EntitySet="laboratoire" />
+      <End Role="visiteur" EntitySet="visiteur" />
+    </AssociationSet>
+    <AssociationSet Name="fk_offrir_medicament" Association="Self.fk_offrir_medicament">
+      <End Role="medicament" EntitySet="medicament" />
+      <End Role="offrir" EntitySet="offrir" />
+    </AssociationSet>
+    <AssociationSet Name="fk_prescrire_medicament" Association="Self.fk_prescrire_medicament">
+      <End Role="medicament" EntitySet="medicament" />
+      <End Role="prescrire" EntitySet="prescrire" />
+    </AssociationSet>
+    <AssociationSet Name="fk_stats_prescriptions_medicament" Association="Self.fk_stats_prescriptions_medicament">
+      <End Role="medicament" EntitySet="medicament" />
+      <End Role="stats_prescriptions" EntitySet="stats_prescriptions" />
+    </AssociationSet>
+    <AssociationSet Name="fk_offrir_rapport_visite" Association="Self.fk_offrir_rapport_visite">
+      <End Role="rapport_visite" EntitySet="rapport_visite" />
+      <End Role="offrir" EntitySet="offrir" />
+    </AssociationSet>
+    <AssociationSet Name="fk_offrir_visiteur" Association="Self.fk_offrir_visiteur">
+      <End Role="visiteur" EntitySet="visiteur" />
+      <End Role="offrir" EntitySet="offrir" />
+    </AssociationSet>
+    <AssociationSet Name="fk_posseder_praticien" Association="Self.fk_posseder_praticien">
+      <End Role="praticien" EntitySet="praticien" />
+      <End Role="posseder" EntitySet="posseder" />
+    </AssociationSet>
+    <AssociationSet Name="fk_posseder_specialite" Association="Self.fk_posseder_specialite">
+      <End Role="specialite" EntitySet="specialite" />
+      <End Role="posseder" EntitySet="posseder" />
+    </AssociationSet>
+    <AssociationSet Name="fk_praticien_type_praticien" Association="Self.fk_praticien_type_praticien">
+      <End Role="type_praticien" EntitySet="type_praticien" />
+      <End Role="praticien" EntitySet="praticien" />
+    </AssociationSet>
+    <AssociationSet Name="fk_rapport_visite_praticien" Association="Self.fk_rapport_visite_praticien">
+      <End Role="praticien" EntitySet="praticien" />
+      <End Role="rapport_visite" EntitySet="rapport_visite" />
+    </AssociationSet>
+    <AssociationSet Name="fk_stats_prescriptions_praticien" Association="Self.fk_stats_prescriptions_praticien">
+      <End Role="praticien" EntitySet="praticien" />
+      <End Role="stats_prescriptions" EntitySet="stats_prescriptions" />
+    </AssociationSet>
+    <AssociationSet Name="fk_prescrire_type_individu" Association="Self.fk_prescrire_type_individu">
+      <End Role="type_individu" EntitySet="type_individu" />
+      <End Role="prescrire" EntitySet="prescrire" />
+    </AssociationSet>
+    <AssociationSet Name="fk_rapport_visite_visiteur" Association="Self.fk_rapport_visite_visiteur">
+      <End Role="visiteur" EntitySet="visiteur" />
+      <End Role="rapport_visite" EntitySet="rapport_visite" />
+    </AssociationSet>
+    <AssociationSet Name="fk_realiser_visiteur" Association="Self.fk_realiser_visiteur">
+      <End Role="visiteur" EntitySet="visiteur" />
+      <End Role="realiser" EntitySet="realiser" />
+    </AssociationSet>
+    <AssociationSet Name="fk_region_secteur" Association="Self.fk_region_secteur">
+      <End Role="secteur" EntitySet="secteur" />
+      <End Role="region" EntitySet="region" />
+    </AssociationSet>
+    <AssociationSet Name="fk_travailler_region" Association="Self.fk_travailler_region">
+      <End Role="region" EntitySet="region" />
+      <End Role="travailler" EntitySet="travailler" />
+    </AssociationSet>
+    <AssociationSet Name="fk_visiteur_secteur" Association="Self.fk_visiteur_secteur">
+      <End Role="secteur" EntitySet="secteur" />
+      <End Role="visiteur" EntitySet="visiteur" />
+    </AssociationSet>
+    <AssociationSet Name="fk_travailler_visiteur" Association="Self.fk_travailler_visiteur">
+      <End Role="visiteur" EntitySet="visiteur" />
+      <End Role="travailler" EntitySet="travailler" />
+    </AssociationSet>
+    <AssociationSet Name="interagir" Association="Self.interagir">
+      <End Role="medicament" EntitySet="medicament" />
+      <End Role="medicament1" EntitySet="medicament" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

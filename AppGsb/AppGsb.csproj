@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B0057158-827E-4C6C-892A-5E58BFC29008}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AppGsb</RootNamespace>
+    <AssemblyName>AppGsb</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Fprincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fprincipal.Designer.cs">
+      <DependentUpon>Fprincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Ajouter\FajouterComposant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Ajouter\FajouterComposant.Designer.cs">
+      <DependentUpon>FajouterComposant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Accueil\Faccueil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Accueil\Faccueil.Designer.cs">
+      <DependentUpon>Faccueil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Ajouter\FajouterRapport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Ajouter\FajouterRapport.Designer.cs">
+      <DependentUpon>FajouterRapport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Connexion\Fconnexion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Connexion\Fconnexion.Designer.cs">
+      <DependentUpon>Fconnexion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Liste\FlisterMedicament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Liste\FlisterMedicament.Designer.cs">
+      <DependentUpon>FlisterMedicament.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Liste\FlisterComposant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Liste\FlisterComposant.Designer.cs">
+      <DependentUpon>FlisterComposant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Liste\FlisterRapport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Liste\FlisterRapport.Designer.cs">
+      <DependentUpon>FlisterRapport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Modifier\Composant\FmodifierSelectionComposant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Modifier\Composant\FmodifierSelectionComposant.Designer.cs">
+      <DependentUpon>FmodifierSelectionComposant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Modifier\Composant\FmodifierSelectionMedicament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Modifier\Composant\FmodifierSelectionMedicament.Designer.cs">
+      <DependentUpon>FmodifierSelectionMedicament.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Modifier\FmodifierMedicamentOffert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Modifier\FmodifierMedicamentOffert.Designer.cs">
+      <DependentUpon>FmodifierMedicamentOffert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Modifier\FmodifierComposant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Modifier\FmodifierComposant.Designer.cs">
+      <DependentUpon>FmodifierComposant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Modifier\MedicamentOffert\FmodifierSelectionMedicament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Modifier\MedicamentOffert\FmodifierSelectionMedicament.Designer.cs">
+      <DependentUpon>FmodifierSelectionMedicament.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Modifier\MedicamentOffert\FmodifierSelectionRapport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Modifier\MedicamentOffert\FmodifierSelectionRapport.Designer.cs">
+      <DependentUpon>FmodifierSelectionRapport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Modifier\MedicamentOffert\FmodifierSelectionVisiteur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Modifier\MedicamentOffert\FmodifierSelectionVisiteur.Designer.cs">
+      <DependentUpon>FmodifierSelectionVisiteur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Recherche\Composant\FrechercheComposantSelectionMedicament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Recherche\Composant\FrechercheComposantSelectionMedicament.Designer.cs">
+      <DependentUpon>FrechercheComposantSelectionMedicament.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Recherche\FrechercheComposant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Recherche\FrechercheComposant.Designer.cs">
+      <DependentUpon>FrechercheComposant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Recherche\FrechercheMedicament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Recherche\FrechercheMedicament.Designer.cs">
+      <DependentUpon>FrechercheMedicament.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Recherche\FrechercheRapport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Recherche\FrechercheRapport.Designer.cs">
+      <DependentUpon>FrechercheRapport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Recherche\Medicament\FrechercheMedicamentSelectionFamille.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Recherche\Medicament\FrechercheMedicamentSelectionFamille.Designer.cs">
+      <DependentUpon>FrechercheMedicamentSelectionFamille.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Recherche\Rapport\FrechercheRapportSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Recherche\Rapport\FrechercheRapportSelection.Designer.cs">
+      <DependentUpon>FrechercheRapportSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Recherche\Rapport\FrechercheRapportSelectionDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Recherche\Rapport\FrechercheRapportSelectionDate.Designer.cs">
+      <DependentUpon>FrechercheRapportSelectionDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Recherche\Rapport\FrechercheRapportSelectionPraticien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Recherche\Rapport\FrechercheRapportSelectionPraticien.Designer.cs">
+      <DependentUpon>FrechercheRapportSelectionPraticien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Supprimer\FsupprimerComposant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Supprimer\FsupprimerComposant.Designer.cs">
+      <DependentUpon>FsupprimerComposant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Supprimer\FsupprimerMedicamentOffert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Supprimer\FsupprimerMedicamentOffert.Designer.cs">
+      <DependentUpon>FsupprimerMedicamentOffert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Supprimer\FsupprimerSelectionRapport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Supprimer\FsupprimerSelectionRapport.Designer.cs">
+      <DependentUpon>FsupprimerSelectionRapport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Supprimer\FsupprimerSelectionVisiteur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Supprimer\FsupprimerSelectionVisiteur.Designer.cs">
+      <DependentUpon>FsupprimerSelectionVisiteur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentations\Supprimer\FsupprimerSelectionComposant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentations\Supprimer\FsupprimerSelectionComposant.Designer.cs">
+      <DependentUpon>FsupprimerSelectionComposant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Fprincipal.resx">
+      <DependentUpon>Fprincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Ajouter\FajouterComposant.resx">
+      <DependentUpon>FajouterComposant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Accueil\Faccueil.resx">
+      <DependentUpon>Faccueil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Ajouter\FajouterRapport.resx">
+      <DependentUpon>FajouterRapport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Connexion\Fconnexion.resx">
+      <DependentUpon>Fconnexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Liste\FlisterMedicament.resx">
+      <DependentUpon>FlisterMedicament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Liste\FlisterComposant.resx">
+      <DependentUpon>FlisterComposant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Liste\FlisterRapport.resx">
+      <DependentUpon>FlisterRapport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Modifier\Composant\FmodifierSelectionComposant.resx">
+      <DependentUpon>FmodifierSelectionComposant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Modifier\Composant\FmodifierSelectionMedicament.resx">
+      <DependentUpon>FmodifierSelectionMedicament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Modifier\FmodifierComposant.resx">
+      <DependentUpon>FmodifierComposant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Modifier\FmodifierMedicamentOffert.resx">
+      <DependentUpon>FmodifierMedicamentOffert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Modifier\MedicamentOffert\FmodifierSelectionMedicament.resx">
+      <DependentUpon>FmodifierSelectionMedicament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Modifier\MedicamentOffert\FmodifierSelectionRapport.resx">
+      <DependentUpon>FmodifierSelectionRapport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Modifier\MedicamentOffert\FmodifierSelectionVisiteur.resx">
+      <DependentUpon>FmodifierSelectionVisiteur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Recherche\Composant\FrechercheComposantSelectionMedicament.resx">
+      <DependentUpon>FrechercheComposantSelectionMedicament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Recherche\FrechercheComposant.resx">
+      <DependentUpon>FrechercheComposant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Recherche\FrechercheMedicament.resx">
+      <DependentUpon>FrechercheMedicament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Recherche\FrechercheRapport.resx">
+      <DependentUpon>FrechercheRapport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Recherche\Medicament\FrechercheMedicamentSelectionFamille.resx">
+      <DependentUpon>FrechercheMedicamentSelectionFamille.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Recherche\Rapport\FrechercheRapportSelection.resx">
+      <DependentUpon>FrechercheRapportSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Recherche\Rapport\FrechercheRapportSelectionDate.resx">
+      <DependentUpon>FrechercheRapportSelectionDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Recherche\Rapport\FrechercheRapportSelectionPraticien.resx">
+      <DependentUpon>FrechercheRapportSelectionPraticien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Supprimer\FsupprimerComposant.resx">
+      <DependentUpon>FsupprimerComposant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Supprimer\FsupprimerMedicamentOffert.resx">
+      <DependentUpon>FsupprimerMedicamentOffert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Supprimer\FsupprimerSelectionRapport.resx">
+      <DependentUpon>FsupprimerSelectionRapport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Supprimer\FsupprimerSelectionVisiteur.resx">
+      <DependentUpon>FsupprimerSelectionVisiteur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentations\Supprimer\FsupprimerSelectionComposant.resx">
+      <DependentUpon>FsupprimerSelectionComposant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\accueil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\liste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bouton-modifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\parametres.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bouton-ajouter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\porte.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power-off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch-on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power-off1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch-off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mise-a-jour-du-systeme.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\supprimer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logogsb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rapport-dactivite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\medicament.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\composer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carre.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carre1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carre %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{176d57df-712c-4113-b238-f7dfcd84202c}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MesExceptions\MesExceptions.csproj">
+      <Project>{9fd92b9b-329f-490c-a19b-086be9f28362}</Project>
+      <Name>MesExceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilitaires\Utilitaires.csproj">
+      <Project>{eab19bea-f3a8-46f6-b14c-1d3316234c13}</Project>
+      <Name>Utilitaires</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\compose%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\allergie-aux-medicaments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ajouter-un-bouton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\supprimer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loupe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loupe%281%29.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

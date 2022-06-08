@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1e45c74913f24445be5683596c851616" Name="Diagram1">
+        <EntityTypeShape EntityType="AppGsbModel.activite_compl" Width="1.5" PointX="5.75" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.composant" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.constituer" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.dosage" Width="1.5" PointX="6" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.etat" Width="1.5" PointX="3.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.famille" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.formuler" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.frais" Width="1.5" PointX="6" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.fraisforfait" Width="1.5" PointX="9" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.fraishorsforfait" Width="1.5" PointX="8.25" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.inviter" Width="1.5" PointX="10.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.laboratoire" Width="1.5" PointX="1.5" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.ligne_fraisforfait" Width="1.5" PointX="11.25" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.medicament" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.offrir" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.posseder" Width="1.5" PointX="8.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.praticien" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.prescrire" Width="1.5" PointX="8.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.presentation" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.rapport_visite" Width="1.5" PointX="3" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.realiser" Width="1.5" PointX="8" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.region" Width="1.5" PointX="3.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.secteur" Width="1.5" PointX="1.5" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.specialite" Width="1.5" PointX="6" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.stats_prescriptions" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.travailler" Width="1.5" PointX="9" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.type_individu" Width="1.5" PointX="6" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.type_praticien" Width="1.5" PointX="3.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppGsbModel.visiteur" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
+        <AssociationConnector Association="AppGsbModel.fk_inviter_activite_compl" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_realiser_activite_compl" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_constituer_composant" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_constituer_medicament" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_prescrire_dosage" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_frais_etat" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_medicament_famille" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_formuler_medicament" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_formuler_presentation" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_frais_visiteur" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_fraishorsforfait_frais" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_ligne_frais" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_ligne_fraisforfait" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_inviter_praticien" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_visiteur_laboratoire" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_offrir_medicament" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_prescrire_medicament" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_stats_prescriptions_medicament" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_offrir_rapport_visite" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_offrir_visiteur" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_posseder_praticien" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_posseder_specialite" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_praticien_type_praticien" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_rapport_visite_praticien" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_stats_prescriptions_praticien" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_prescrire_type_individu" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_rapport_visite_visiteur" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_realiser_visiteur" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_region_secteur" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_travailler_region" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_visiteur_secteur" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.fk_travailler_visiteur" ManuallyRouted="false" />
+        <AssociationConnector Association="AppGsbModel.interagir" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

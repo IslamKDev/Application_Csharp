@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AppGsbModelStoreContainer" CdmEntityContainer="AppGsbEntities">
+    <EntitySetMapping Name="activite_compl">
+      <EntityTypeMapping TypeName="AppGsbModel.activite_compl">
+        <MappingFragment StoreEntitySet="activite_compl">
+          <ScalarProperty Name="id_activite_compl" ColumnName="id_activite_compl" />
+          <ScalarProperty Name="date_activite" ColumnName="date_activite" />
+          <ScalarProperty Name="lieu_activite" ColumnName="lieu_activite" />
+          <ScalarProperty Name="theme_activite" ColumnName="theme_activite" />
+          <ScalarProperty Name="motif_activite" ColumnName="motif_activite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="composant">
+      <EntityTypeMapping TypeName="AppGsbModel.composant">
+        <MappingFragment StoreEntitySet="composant">
+          <ScalarProperty Name="id_composant" ColumnName="id_composant" />
+          <ScalarProperty Name="lib_composant" ColumnName="lib_composant" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="constituer">
+      <EntityTypeMapping TypeName="AppGsbModel.constituer">
+        <MappingFragment StoreEntitySet="constituer">
+          <ScalarProperty Name="id_composant" ColumnName="id_composant" />
+          <ScalarProperty Name="id_medicament" ColumnName="id_medicament" />
+          <ScalarProperty Name="qte_composant" ColumnName="qte_composant" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dosage">
+      <EntityTypeMapping TypeName="AppGsbModel.dosage">
+        <MappingFragment StoreEntitySet="dosage">
+          <ScalarProperty Name="id_dosage" ColumnName="id_dosage" />
+          <ScalarProperty Name="qte_dosage" ColumnName="qte_dosage" />
+          <ScalarProperty Name="unite_dosage" ColumnName="unite_dosage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="etat">
+      <EntityTypeMapping TypeName="AppGsbModel.etat">
+        <MappingFragment StoreEntitySet="etat">
+          <ScalarProperty Name="id_etat" ColumnName="id_etat" />
+          <ScalarProperty Name="lib_etat" ColumnName="lib_etat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="famille">
+      <EntityTypeMapping TypeName="AppGsbModel.famille">
+        <MappingFragment StoreEntitySet="famille">
+          <ScalarProperty Name="id_famille" ColumnName="id_famille" />
+          <ScalarProperty Name="lib_famille" ColumnName="lib_famille" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="formuler">
+      <EntityTypeMapping TypeName="AppGsbModel.formuler">
+        <MappingFragment StoreEntitySet="formuler">
+          <ScalarProperty Name="id_medicament" ColumnName="id_medicament" />
+          <ScalarProperty Name="id_presentation" ColumnName="id_presentation" />
+          <ScalarProperty Name="qte_formuler" ColumnName="qte_formuler" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="frais">
+      <EntityTypeMapping TypeName="AppGsbModel.frais">
+        <MappingFragment StoreEntitySet="frais">
+          <ScalarProperty Name="id_frais" ColumnName="id_frais" />
+          <ScalarProperty Name="id_etat" ColumnName="id_etat" />
+          <ScalarProperty Name="anneemois" ColumnName="anneemois" />
+          <ScalarProperty Name="id_visiteur" ColumnName="id_visiteur" />
+          <ScalarProperty Name="nbjustificatifs" ColumnName="nbjustificatifs" />
+          <ScalarProperty Name="datemodification" ColumnName="datemodification" />
+          <ScalarProperty Name="montantvalide" ColumnName="montantvalide" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="fraisforfait">
+      <EntityTypeMapping TypeName="AppGsbModel.fraisforfait">
+        <MappingFragment StoreEntitySet="fraisforfait">
+          <ScalarProperty Name="id_fraisforfait" ColumnName="id_fraisforfait" />
+          <ScalarProperty Name="lib_fraisforfait" ColumnName="lib_fraisforfait" />
+          <ScalarProperty Name="montant_frais_forfait" ColumnName="montant_frais_forfait" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="fraishorsforfait">
+      <EntityTypeMapping TypeName="AppGsbModel.fraishorsforfait">
+        <MappingFragment StoreEntitySet="fraishorsforfait">
+          <ScalarProperty Name="id_fraishorsforfait" ColumnName="id_fraishorsforfait" />
+          <ScalarProperty Name="id_frais" ColumnName="id_frais" />
+          <ScalarProperty Name="date_fraishorsforfait" ColumnName="date_fraishorsforfait" />
+          <ScalarProperty Name="montant_fraishorsforfait" ColumnName="montant_fraishorsforfait" />
+          <ScalarProperty Name="lib_fraishorsforfait" ColumnName="lib_fraishorsforfait" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inviter">
+      <EntityTypeMapping TypeName="AppGsbModel.inviter">
+        <MappingFragment StoreEntitySet="inviter">
+          <ScalarProperty Name="id_activite_compl" ColumnName="id_activite_compl" />
+          <ScalarProperty Name="id_praticien" ColumnName="id_praticien" />
+          <ScalarProperty Name="specialiste" ColumnName="specialiste" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="laboratoire">
+      <EntityTypeMapping TypeName="AppGsbModel.laboratoire">
+        <MappingFragment StoreEntitySet="laboratoire">
+          <ScalarProperty Name="id_laboratoire" ColumnName="id_laboratoire" />
+          <ScalarProperty Name="nom_laboratoire" ColumnName="nom_laboratoire" />
+          <ScalarProperty Name="chef_vente" ColumnName="chef_vente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ligne_fraisforfait">
+      <EntityTypeMapping TypeName="AppGsbModel.ligne_fraisforfait">
+        <MappingFragment StoreEntitySet="ligne_fraisforfait">
+          <ScalarProperty Name="id_frais" ColumnName="id_frais" />
+          <ScalarProperty Name="id_fraisforfait" ColumnName="id_fraisforfait" />
+          <ScalarProperty Name="quantite_ligne" ColumnName="quantite_ligne" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="medicament">
+      <EntityTypeMapping TypeName="AppGsbModel.medicament">
+        <MappingFragment StoreEntitySet="medicament">
+          <ScalarProperty Name="id_medicament" ColumnName="id_medicament" />
+          <ScalarProperty Name="id_famille" ColumnName="id_famille" />
+          <ScalarProperty Name="depot_legal" ColumnName="depot_legal" />
+          <ScalarProperty Name="nom_commercial" ColumnName="nom_commercial" />
+          <ScalarProperty Name="effets" ColumnName="effets" />
+          <ScalarProperty Name="contre_indication" ColumnName="contre_indication" />
+          <ScalarProperty Name="prix_echantillon" ColumnName="prix_echantillon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="offrir">
+      <EntityTypeMapping TypeName="AppGsbModel.offrir">
+        <MappingFragment StoreEntitySet="offrir">
+          <ScalarProperty Name="id_medicament" ColumnName="id_medicament" />
+          <ScalarProperty Name="id_rapport" ColumnName="id_rapport" />
+          <ScalarProperty Name="id_visiteur" ColumnName="id_visiteur" />
+          <ScalarProperty Name="qte_offerte" ColumnName="qte_offerte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="posseder">
+      <EntityTypeMapping TypeName="AppGsbModel.posseder">
+        <MappingFragment StoreEntitySet="posseder">
+          <ScalarProperty Name="id_praticien" ColumnName="id_praticien" />
+          <ScalarProperty Name="id_specialite" ColumnName="id_specialite" />
+          <ScalarProperty Name="diplome" ColumnName="diplome" />
+          <ScalarProperty Name="coef_prescription" ColumnName="coef_prescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="praticien">
+      <EntityTypeMapping TypeName="AppGsbModel.praticien">
+        <MappingFragment StoreEntitySet="praticien">
+          <ScalarProperty Name="id_praticien" ColumnName="id_praticien" />
+          <ScalarProperty Name="id_type_praticien" ColumnName="id_type_praticien" />
+          <ScalarProperty Name="nom_praticien" ColumnName="nom_praticien" />
+          <ScalarProperty Name="prenom_praticien" ColumnName="prenom_praticien" />
+          <ScalarProperty Name="adresse_praticien" ColumnName="adresse_praticien" />
+          <ScalarProperty Name="cp_praticien" ColumnName="cp_praticien" />
+          <ScalarProperty Name="ville_praticien" ColumnName="ville_praticien" />
+          <ScalarProperty Name="coef_notoriete" ColumnName="coef_notoriete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="prescrire">
+      <EntityTypeMapping TypeName="AppGsbModel.prescrire">
+        <MappingFragment StoreEntitySet="prescrire">
+          <ScalarProperty Name="id_dosage" ColumnName="id_dosage" />
+          <ScalarProperty Name="id_medicament" ColumnName="id_medicament" />
+          <ScalarProperty Name="id_type_individu" ColumnName="id_type_individu" />
+          <ScalarProperty Name="posologie" ColumnName="posologie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="presentation">
+      <EntityTypeMapping TypeName="AppGsbModel.presentation">
+        <MappingFragment StoreEntitySet="presentation">
+          <ScalarProperty Name="id_presentation" ColumnName="id_presentation" />
+          <ScalarProperty Name="lib_presentation" ColumnName="lib_presentation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rapport_visite">
+      <EntityTypeMapping TypeName="AppGsbModel.rapport_visite">
+        <MappingFragment StoreEntitySet="rapport_visite">
+          <ScalarProperty Name="id_rapport" ColumnName="id_rapport" />
+          <ScalarProperty Name="id_praticien" ColumnName="id_praticien" />
+          <ScalarProperty Name="id_visiteur" ColumnName="id_visiteur" />
+          <ScalarProperty Name="date_rapport" ColumnName="date_rapport" />
+          <ScalarProperty Name="bilan" ColumnName="bilan" />
+          <ScalarProperty Name="motif" ColumnName="motif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="realiser">
+      <EntityTypeMapping TypeName="AppGsbModel.realiser">
+        <MappingFragment StoreEntitySet="realiser">
+          <ScalarProperty Name="id_activite_compl" ColumnName="id_activite_compl" />
+          <ScalarProperty Name="id_visiteur" ColumnName="id_visiteur" />
+          <ScalarProperty Name="montant_ac" ColumnName="montant_ac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="region">
+      <EntityTypeMapping TypeName="AppGsbModel.region">
+        <MappingFragment StoreEntitySet="region">
+          <ScalarProperty Name="id_region" ColumnName="id_region" />
+          <ScalarProperty Name="id_secteur" ColumnName="id_secteur" />
+          <ScalarProperty Name="nom_region" ColumnName="nom_region" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="secteur">
+      <EntityTypeMapping TypeName="AppGsbModel.secteur">
+        <MappingFragment StoreEntitySet="secteur">
+          <ScalarProperty Name="id_secteur" ColumnName="id_secteur" />
+          <ScalarProperty Name="lib_secteur" ColumnName="lib_secteur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="specialite">
+      <EntityTypeMapping TypeName="AppGsbModel.specialite">
+        <MappingFragment StoreEntitySet="specialite">
+          <ScalarProperty Name="id_specialite" ColumnName="id_specialite" />
+          <ScalarProperty Name="lib_specialite" ColumnName="lib_specialite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stats_prescriptions">
+      <EntityTypeMapping TypeName="AppGsbModel.stats_prescriptions">
+        <MappingFragment StoreEntitySet="stats_prescriptions">
+          <ScalarProperty Name="id_praticien" ColumnName="id_praticien" />
+          <ScalarProperty Name="id_medicament" ColumnName="id_medicament" />
+          <ScalarProperty Name="annee_mois" ColumnName="annee_mois" />
+          <ScalarProperty Name="quantite" ColumnName="quantite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="travailler">
+      <EntityTypeMapping TypeName="AppGsbModel.travailler">
+        <MappingFragment StoreEntitySet="travailler">
+          <ScalarProperty Name="id_visiteur" ColumnName="id_visiteur" />
+          <ScalarProperty Name="jjmmaa" ColumnName="jjmmaa" />
+          <ScalarProperty Name="id_region" ColumnName="id_region" />
+          <ScalarProperty Name="role_visiteur" ColumnName="role_visiteur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type_individu">
+      <EntityTypeMapping TypeName="AppGsbModel.type_individu">
+        <MappingFragment StoreEntitySet="type_individu">
+          <ScalarProperty Name="id_type_individu" ColumnName="id_type_individu" />
+          <ScalarProperty Name="lib_type_individu" ColumnName="lib_type_individu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type_praticien">
+      <EntityTypeMapping TypeName="AppGsbModel.type_praticien">
+        <MappingFragment StoreEntitySet="type_praticien">
+          <ScalarProperty Name="id_type_praticien" ColumnName="id_type_praticien" />
+          <ScalarProperty Name="lib_type_praticien" ColumnName="lib_type_praticien" />
+          <ScalarProperty Name="lieu_type_praticien" ColumnName="lieu_type_praticien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="visiteur">
+      <EntityTypeMapping TypeName="AppGsbModel.visiteur">
+        <MappingFragment StoreEntitySet="visiteur">
+          <ScalarProperty Name="id_visiteur" ColumnName="id_visiteur" />
+          <ScalarProperty Name="id_laboratoire" ColumnName="id_laboratoire" />
+          <ScalarProperty Name="id_secteur" ColumnName="id_secteur" />
+          <ScalarProperty Name="nom_visiteur" ColumnName="nom_visiteur" />
+          <ScalarProperty Name="prenom_visiteur" ColumnName="prenom_visiteur" />
+          <ScalarProperty Name="adresse_visiteur" ColumnName="adresse_visiteur" />
+          <ScalarProperty Name="cp_visiteur" ColumnName="cp_visiteur" />
+          <ScalarProperty Name="ville_visiteur" ColumnName="ville_visiteur" />
+          <ScalarProperty Name="date_embauche" ColumnName="date_embauche" />
+          <ScalarProperty Name="login_visiteur" ColumnName="login_visiteur" />
+          <ScalarProperty Name="pwd_visiteur" ColumnName="pwd_visiteur" />
+          <ScalarProperty Name="type_visiteur" ColumnName="type_visiteur" />
+          <ScalarProperty Name="sel_visiteur" ColumnName="sel_visiteur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="interagir" TypeName="AppGsbModel.interagir" StoreEntitySet="interagir">
+      <EndProperty Name="medicament">
+        <ScalarProperty Name="id_medicament" ColumnName="id_medicament" />
+      </EndProperty>
+      <EndProperty Name="medicament1">
+        <ScalarProperty Name="id_medicament" ColumnName="med_id_medicament" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
